@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./scripts/styles/all.css">
+</head>
+<body>
+    <div id="header"></div>
+    <!-- create navbar -->
+    <div id="show"></div>
+  </body>
+  </html>
+    <!-- create navbar -->
+  <script type="module">
+  import navbar from "./components/navbar.js";
+  
+//console.log("navbar",navbar);
+  
+  let header=document.getElementById("header");
+  
+  header.innerHTML= navbar();
+
+  import  {getdata,appenddata} from"./components/main.js";
+ ///console.log(getdata,appenddata);
+let parent=document.getElementById("show");
+let response= await getdata(`https://www.themealdb.com/api/json/v1/1/search.php?s=chocolate`);
+console.log(response);
+
+appenddata(response,parent);
+
+
+
+  </script>

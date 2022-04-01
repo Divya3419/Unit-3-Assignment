@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #show{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            margin:auto;
+            border:2px solid black;
+
+            width:70%;
+        }
+        img{
+            width:50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="show"></div>
+</body>
+</html>
+<script>
+    let data=JSON.parse(localStorage.getItem("store"));
+
+    console.log(data);
+
+    
+        var maindiv=document.createElement("div");
+
+        let img=document.createElement("img");
+    img.src=data.Poster;
+var div=document.createElement("div");
+
+    let p=document.createElement("p");
+    p.innerText=data.Title;
+
+    let yor=document.createElement("p");
+    yor.innerText=data.Year;
+    
+    let imdb=document.createElement("p");
+    imdb.innerText=data.imdbID;
+maindiv.append(img);
+div.append(p,yor,imdb);
+document.querySelector("#show").append(maindiv,div);
+
+    
+</script>

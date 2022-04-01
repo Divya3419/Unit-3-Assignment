@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 500px;
+            height: 500px;
+            
+
+        }
+        div{
+        
+            margin: auto;
+            width: 50%;
+            height:400px
+        }
+        button{
+            margin-bottom: 40px;
+        
+        }
+        p{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h1>McDonald's Food</h1>
+    <input type="checkbox" value="fries" name="FRIes"/>
+    <input type="checkbox" value="fries"/>
+    <input type="checkbox" value="fries"/>
+    <input type="checkbox" value="fries"/>
+    <input type="checkbox" value="fries"/>
+    <!-- <select id="food">
+        <option value="fries">Fries</option>
+        <option value="burgur">Burgur</option>
+        <option value="drink">Drink</option>
+        <option value="papad">Papad</option>
+        <option value="choco">Chocolava cake</option>
+    </select> -->
+    
+    <button id="orderno"  onclick="orderfood()">Order Food</button>
+
+    <div id="outer"></div>
+</body>
+</html>
+<script>
+    let count=0;
+  let orderno = document.getElementById("orderno");
+function orderfood() {
+    count++;
+    let order=document.getElementById("food").value;
+let macDi="open";
+
+let foodPromise=new Promise(function(resolve, reject){
+
+    let time=Math.random()*5000;
+
+    if(macDi==="open"){
+        setTimeout (function(){
+    resolve(order);
+},time);
+console.log("Time:",time);
+    }
+    else{
+        reject("go other place");
+    }
+});
+foodPromise.then(function(response){
+    console.log(`${response} is ready`);
+
+let maindiv=document.createElement("div");
+document.querySelector("#outer").innerHTML=null;
+
+if(response==="fries"){
+    let p=document.createElement("p");
+    p.innerHTML=`Order no${count}`
+    let img=document.createElement("img");
+    img.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFb2g1zDHMZeLb3yIWVBVh1P6Q-T_-OuVY9IAxV4XrzviTzqBPkGtWwB1YAcuG1ftD2r0&usqp=CAU";
+    maindiv.append(p,img);
+    document.querySelector("#outer").append(maindiv);
+
+}
+
+
+else if(response==="burgur"){
+    let p=document.createElement("p");
+    p.innerHTML=`Order no${count}`
+    let img=document.createElement("img");
+    img.src="https://b.zmtcdn.com/data/pictures/chains/8/310078/04e1cd573a0a157dc7af2aa348f51be2_featured_v2.jpg";
+    maindiv.append(p,img);
+    document.querySelector("#outer").append(maindiv);
+}
+else if(response==="drink"){
+    let p=document.createElement("p");
+    p.innerHTML=`Order no${count}`
+    let img=document.createElement("img");
+    img.src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/tc-dry-bartender-1576191437.jpg?crop=0.502xw:1.00xh;0.248xw,0&resize=640:*";
+    maindiv.append(p,img);
+    document.querySelector("#outer").append(maindiv);
+}
+else if(response==="papad"){
+    let p=document.createElement("p");
+    p.innerHTML=`Order no${count}`
+    let img=document.createElement("img");
+    img.src="https://bsmedia.business-standard.com/_media/bs/img/article/2019-09/12/full/1568274937-1296.jpg";
+    maindiv.append(p,img);
+    document.querySelector("#outer").append(maindiv);
+}
+ else if(response==="choco"){
+    let p=document.createElement("p");
+    p.innerHTML=`Order no${count}`
+    let img=document.createElement("img");
+    img.src="https://preppykitchen.com/wp-content/uploads/2019/06/Chocolate-cake-recipe-1200a.jpg";
+    maindiv.append(p,img);
+    document.querySelector("#outer").append(maindiv);
+}
+
+
+
+});
+
+foodPromise.catch(function(error){
+    console.log("error:",error)
+    let maindiv=document.createElement("div");
+document.querySelector("#outer").innerHTML=null;
+
+    if(error==="go other place"){
+        let img=document.createElement("img");
+    img.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu8QRqviISSm1ueydBBY51uB3h3tOGIqeCSQ&usqp=CAU";
+    maindiv.append(img);
+    document.querySelector("#outer").append(maindiv);
+    }
+});
+
+}
+</script>

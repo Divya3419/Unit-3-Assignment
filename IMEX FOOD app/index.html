@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./scripts/styles/all.css">
+</head>
+<body>
+  <div id="header"></div>
+  <!-- create navbar -->
+ <div id="show"></div>
+</body>
+</html>
+  <!-- create navbar -->
+<script type="module">
+import navbar from "./components/navbar.js";
+
+//console.log("navbar",navbar);
+
+let header=document.getElementById("header");
+
+header.innerHTML= navbar();
+
+// import {getdata,appenddata} from"./components/main.js";
+
+// ///console.log(getdata,appenddata);
+// let parent=document.getElementById("show");
+// let response= await getdata(`https://www.themealdb.com/api/json/v1/1/search.php?s=paneer`);
+// console.log(response);
+
+// appenddata(response,parent);
+
+let input_box=document.getElementById("search");
+input_box.addEventListener("keypress",()=>{
+  getdata(event);
+})
+
+const getdata= async (e)=>{
+  if(e.code=='Enter'){
+    try{
+let input=input_box.value;
+
+//console.log(input);
+
+let res= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`)
+let data= await res.json();
+console.log("data",data);
+appenddata(data);
+    }
+    catch (err){
+      console.log("error",err);
+    }
+  }
+}
+let showdata=document.getElementById("show");
+const appenddata=(data)=>{
+  showdata.innerHTML="";
+  data.meals.forEach((ele)=>{
+    let div=document.createElement("div");
+
+    let img=document.createElement("img");
+    img.src=ele.strMealThumb;
+
+    let name=document.createElement("p");
+    name.innerText=ele.strMeal;
+    name.style.color="white";
+    
+    div.append(name,img);
+showdata.append(div);
+  })
+}
+
+</script>

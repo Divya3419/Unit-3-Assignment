@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            
+            gap:20px;
+        }
+
+        
+        img{
+            width:100%;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+    
+<h1>Search Movie</h1>
+<input type="text" oninput="searchMovie()" id="search" placeholder="Search"/>
+ 
+
+    <div id="outer"></div>
+
+    
+</body>
+</html>
+
+<script>
+
+ async function searchMovie(){
+    let input=document.getElementById("search").value;
+    
+    try{
+
+        let res= await fetch(`https://omdbapi.com/?s=${input}&page=1&apikey=b5b5cc9b`);
+
+        let data = await res.json();
+        appendMovie(data);
+        console.log("data:",data);
+    }
+    catch (err){
+        console.log("error:",err);
+    }
+
+}
+
+    function appendMovie(data){
+document.getElementById("outer").innerHTML="";
+
+data.Search.forEach(function(ele){
+var maindiv=document.createElement("div");
+
+var img=document.createElement("img");
+img.src=ele.Poster;
+
+var title=document.createElement("p");
+title.innerText=ele.Title;
+
+var type=document.createElement("p");
+type.innerText=ele.Type;
+
+var year=document.createElement("p");
+year.innerText=ele.Year;
+
+var imdbid=document.createElement("p");
+imdbid.innerText=ele.imdbID;
+
+maindiv.append(img,title,type,year,imdbid);
+document.querySelector("#outer").append(maindiv);
+
+        })
+    }
+
+
+
+    
+</script>

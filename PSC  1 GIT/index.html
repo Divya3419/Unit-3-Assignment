@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+   <div id="navbar"></div>
+   <div id="details"></div>
+</body>
+</html>
+<script type="module">
+
+import header from "./components/header.js";
+
+//console.log("header",header);  check data or not
+
+let navbar=document.getElementById("navbar");
+
+navbar.innerHTML = header();
+/////https://api.github.com/users/swanandapps/repos"
+
+let input_box=document.getElementById("search-input")
+
+input_box.addEventListener("keypress", ()=>{
+
+    getdata(event);
+});
+
+let img=document.getElementById("profile-img");
+
+const getdata= async(e)=>{
+
+if(e.code==='Enter'){
+    try{
+    let input=input_box.value;
+
+    let res = await fetch(`https://api.github.com/users/${input}/repos`);
+
+
+let data = await res.json();
+console.log("data",data);
+img.src=data[0].owner.avatar_url;
+appenddata(data);
+    }
+    catch (error){
+        console.log("error",error);
+    }
+
+}
+};
+ 
+ const appenddata = (data)=>{
+data.forEach(function(ele){
+         let div=document.createElement("div");
+         let name=document.createElement("h3");
+         name.innerText=`Name:${ele.full_name}`;
+         let clone=document.createElement("p");
+         clone.innerText= `Clone_Url:${ele.clone_url}`;
+
+         let colb=document.createElement("p");
+colb.innerText= `Collaborators_Url:${ele.collaborators_url}`;
+
+    let depoly=document.createElement("p");
+depoly.innerText= `Deployments_Url:${ele.deployments_url}`;
+div.append(name,depoly,colb,clone);
+document.querySelector("#details").append(div);
+
+ })
+}
+
+</script>

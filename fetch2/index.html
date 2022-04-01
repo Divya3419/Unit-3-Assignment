@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body{
+    background-color:rgb(179, 211, 157)
+}
+        #int{
+            
+
+            width: 70%;
+            margin:auto;
+         margin-top:40px;
+        }
+        
+        input{
+           height:40px;
+           margin-left:30%;
+           border-radius: 10px;
+           margin-bottom: 20px;
+        }
+        button{
+            height:40px;
+        width:100px;
+        border-radius: 10px;
+        background-color:aquamarine;
+        font-size:20px;
+        }
+
+     
+#outer{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    border:1px solid black;
+    width:80%;
+    height:500px;
+    margin:auto;
+    background-color:white;
+    
+
+}
+#outer>div{
+    
+    
+    text-align:center;
+
+}
+
+#outer iframe{
+    width:500px;
+    height:100%;
+}
+#outer img{
+    width:60px;
+}
+
+    </style>
+    
+</head>
+<body>
+    <div id="int">
+    <input type="text"  id="city"/>
+    <button onclick="getweather()">Weather</button>
+
+    <div id="outer"></div>
+
+    <div></div>
+    <div></div>
+
+   </div>
+</body>
+</html>
+
+<script src="index.js">
+
+</script>

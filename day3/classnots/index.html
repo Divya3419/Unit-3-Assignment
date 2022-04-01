@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    let arr= new Array(1,2,3,8,5,6);
+     console.log("arr:",Object.values(arr));   // Object.values used for arr symbol
+
+    function Array(){
+    
+
+        Object.defineProperty(this,"length",{
+            value:0,
+            writable:true,
+            enumerable:false,
+        });
+
+        for(let i=0;i<arguments.length;i++){
+            this[i]=arguments[i];
+        }
+            this.length=arguments.length;
+        }
+        //for push value
+        Array.prototype.push=function(value){
+            let index=this.length;
+            this[index]=value;
+            this.length++;
+        };
+// for pop value
+        Array.prototype.pop=function(){
+            let index=this.length-1;
+           delete this[index];
+           this.length--;
+        };
+        let arr1 =new Array(1,2,3,4,5,6,7,8,9);
+        arr1.push(9);
+        arr1.push(10);
+        arr1.pop();
+        console.log("arr1:",Object.values(arr1));
+
+        
+</script>

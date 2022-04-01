@@ -1,0 +1,38 @@
+#outer{
+    border: 1px solid black;
+    height: 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+
+#sec{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: space-between;
+    margin-top: 8px;
+    
+}
+#slideshow>img{
+    width:100%;
+    height:400px;
+    margin-bottom: 40px;
+}
+
+#movies{
+    
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+gap:50px;
+}
+
+#movies img{
+    width: 100%;
+}
+#sort-buttons{
+    margin-bottom:30px;
+}

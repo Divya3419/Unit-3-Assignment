@@ -1,0 +1,28 @@
+#login-form-div
+{
+
+   width: 20%;
+  height: 200px;
+  margin: auto;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top:40px;
+  
+}
+ input
+{
+    width: 80%;
+    height: 20px;
+    margin-bottom: 10px;
+   
+}
+h1{
+    text-align: center;
+}
+#btn{
+    width:50%;
+    height:30px;
+    background-color: teal;
+    border-radius:5px;
+    color: white;
+}
