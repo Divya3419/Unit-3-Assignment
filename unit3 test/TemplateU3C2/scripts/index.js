@@ -48,6 +48,9 @@ let cartarr= JSON.parse(localStorage.getItem("cart")) || [];
 function cArt(ele){
     count++;
     console.log(ele);
+    document.querySelector("#count").innerText=count;
     cartarr.push(ele);
+
     localStorage.setItem("cart",JSON.stringify(cartarr));
+    
 }
