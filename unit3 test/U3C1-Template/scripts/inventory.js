@@ -26,7 +26,7 @@ var img=document.createElement("img");
     var btn=document.createElement("button");
     btn.innerText="remove product";
     btn.addEventListener("click",function(){
-        arr.pop();
+        arr.splice(index,1);
         localStorage.setItem("products",JSON.stringify(arr));
 
         
