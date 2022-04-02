@@ -4,12 +4,12 @@ window.location.href="index.html";
         }
 
 
-var arr= JSON.parse(localStorage.getItem("products"));
+var arr= JSON.parse(localStorage.getItem("products")) || [];
 //console.log(arr);
 
 
 
-arr.map(function(ele){
+arr.map(function(ele,index){
     var div=document.createElement("div");
 
     let name=document.createElement("p");
@@ -26,7 +26,10 @@ var img=document.createElement("img");
     var btn=document.createElement("button");
     btn.innerText="remove product";
     btn.addEventListener("click",function(){
-        remove(ele);
+        arr.pop();
+        localStorage.setItem("products",JSON.stringify(arr));
+
+        
     })
 
 div.append(type,img,name,price,btn)
@@ -36,8 +39,7 @@ document.querySelector("#products_data").append(div);
 
     
 })
-// function remove(ele) {
-//     document.querySelector("#products_data").innerHTML="";
-// }
+
+
 
    
