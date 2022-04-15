@@ -32,8 +32,10 @@
   </body>
 </html>
 
-<script>
+<script type="module">
   //WRITE YOUR LOGIC HERE
+  let money=JSON.parse(localStorage.getItem("wallet"));
+document.querySelector("#wallet").innerText=money;
 
   let url=`https://masai-vouchers-api.herokuapp.com/api/vouchers`;
 

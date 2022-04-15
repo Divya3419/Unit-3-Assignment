@@ -19,10 +19,15 @@
 
 <script>
   //write logic here
+
+  let money=0 || JSON.parse(localStorage.getItem('wallet'));
 function addtoWallet(){
   let amt=document.getElementById("amount").value;
-console.log(amt);
-localStorage.setItem("wallet",JSON.stringify(amt));
+//console.log(amt);
+money=Number(money)+Number(amt);
+
+//console.log(amt);
+localStorage.setItem("wallet",JSON.stringify(money));
 
 }
 
