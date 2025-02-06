@@ -1,41 +1,39 @@
-var reGuser=JSON.parse(localStorage.getItem("signup"));
+var reGuser = JSON.parse(localStorage.getItem("signup"));
 
 console.log(reGuser);
 
-document.getElementById("login").addEventListener("submit",detailsubmit);
+document.getElementById("login").addEventListener("submit", detailsubmit);
 
 
 
 
 
-function detailsubmit(event){
-event.preventDefault();
+function detailsubmit(event) {
+    event.preventDefault();
 
 
-    let email=document.querySelector("#email").value;
-    
-    let password=document.querySelector("#password").value;
+    let email = document.querySelector("#email").value;
+
+    let password = document.querySelector("#password").value;
 
 
 
-var flag=false;
-for(var i=0;i<reGuser.length;i++){
-   // console.log(reGuser[i])
-if(reGuser[i].email==email && reGuser[i].password==password){
-     //console.log(reGuser[i])
-flag=true;
-}
-}
-if(flag==true){
-console.log("login Success");
+    var flag = false;
+    for (var i = 0; i < reGuser.length; i++) {
 
-window.location.href="index.html"
-}
+        if (reGuser[i].email == email && reGuser[i].password == password) {
+            flag = true;
+        }
+    }
+    if (flag == true) {
+        alert("login Success");
 
-else{
-    console.log("login fail");
-    alert("invalid Credentials");
-}
+        window.location.href = "index.html"
+    }
+
+    else {
+        alert("invalid Credentials");
+    }
 
 
 

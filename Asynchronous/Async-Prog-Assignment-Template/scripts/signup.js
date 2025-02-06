@@ -1,26 +1,23 @@
-document.querySelector("#signup").addEventListener("submit",detail);
+document.querySelector("#signup").addEventListener("submit", detail);
 
-var userarr= JSON.parse(localStorage.getItem("signup")) || [];
+var signuparr = JSON.parse(localStorage.getItem("signup")) || [];
 //console.log(userarr);
 
-function detail(event){
+function detail(event) {
     event.preventDefault();
 
-    function usersignup(n,ph,e,p){
-        this.name=document.querySelector("#name").value;
-        this.number=document.querySelector("#number").value;
-        this.email=document.querySelector("#email").value;
-        this.password=document.querySelector("#password").value;
+    let signup = {
+        name: document.querySelector("#name").value,
+        number: document.querySelector("#number").value,
+        email: document.querySelector("#email").value,
+        password: document.querySelector("#password").value
 
 
     }
+    console.log(signup);
+    signuparr.push(signup);
 
 
-    let username= new usersignup(name,number,email,password);
-console.log(username);
-    userarr.push(username);
-    
-
-localStorage.setItem("signup",JSON.stringify(userarr));
+    localStorage.setItem("signup", JSON.stringify(signuparr));
 
 }

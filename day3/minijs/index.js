@@ -102,6 +102,7 @@ function appendscope(data) {
 
 
 function appendhoisting(data) {
+
     data.forEach(function (ele) {
         maindiv.innerHTML = "";
         let list1 = document.createElement("li");
@@ -155,3 +156,8 @@ function appendproto(data) {
     })
 
 }
+
+
+
+
+console.log(0.2+0.1 ==0.3)
