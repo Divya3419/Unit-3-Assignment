@@ -16,25 +16,29 @@ let images = JSON.parse(localStorage.getItem('images')) || []
 let slideshow = document.getElementById("slideshow");
 
 
-let i = 0;
+// let i = 0;
 
-setInterval(function () {
-  if (i == images.length) {
-    i = 0;
-  }
-  let image = images[i];
+// setInterval(function () {
+//   if (i == images.length) {
+//     i = 0;
+//   }
+//   let image = images[i];
 
-  slideshow.innerHTML = null;
+//   slideshow.innerHTML = null;
 
-  let img = document.createElement("img");
-  img.src = image;
+//   let img = document.createElement("img");
+//   img.src = image;
 
-  slideshow.append(img);
-  i++;
-}, 1000);
+//   slideshow.append(img);
+//   i++;
+// }, 1000);
 
 
-
+setInterval(()=>{
+  let image=document.createElement("img")
+  image.src=images
+//slideshow.append(image)
+},1000)
 
 
 var obj2 = [
